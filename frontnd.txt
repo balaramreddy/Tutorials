@@ -1,0 +1,45 @@
+
+
+visual studio
+-------------
+	Emmet - https://docs.emmet.io/cheat-sheet/
+	live saas compailer
+
+frontend
+-------------
+html - 
+css  -
+bootstap 3/4/5 
+	getbootstrap
+	material design bootstarp
+	semantic ui
+	bluma
+	tailwind css
+	font awsome icons
+	google fonts
+
+javascript
+jquery
+Angular 
+material angular
+react
+vue
+
+server side technologies
+------------------------
+nodejs
+expressjs
+
+database
+----------
+mongodb
+sql
+
+postman - used for test the api calls
+
+firebase integration
+Heroku
+
+git hub - version control system
+
+	
