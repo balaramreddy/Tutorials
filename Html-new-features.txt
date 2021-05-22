@@ -63,5 +63,10 @@ Html5 New Media elements
 
 Storages
 -----------
-Local Storage
-Session Storage
+Local Storage:
+    Stores the data with no Expriy date.
+    window.localstorage
+
+Session Storage:
+    Stores data for one session, when browser tab closes data will lost automatically.
+    window.sessionstorage
