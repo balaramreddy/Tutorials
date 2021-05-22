@@ -63,4 +63,5 @@ Html5 New Media elements
 
 Storages
 -----------
-Local and Session Storage
+Local Storage
+Session Storage
