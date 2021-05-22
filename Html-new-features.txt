@@ -60,3 +60,8 @@ Html5 New Media elements
 <source>	Defines multiple media resources for media elements (<video> and <audio>)
 <track>	    Defines text tracks for media elements (<video> and <audio>)
 <video>	    Defines video or movie
+
+Storages
+-----------
+Local Storage
+Session Storage
