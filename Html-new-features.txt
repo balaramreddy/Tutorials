@@ -61,7 +61,7 @@ Html5 New Media elements
 <track>	    Defines text tracks for media elements (<video> and <audio>)
 <video>	    Defines video or movie
 
-Storages
+Web Storages
 -----------
 Local Storage:
     Stores the data with no Expriy date.
