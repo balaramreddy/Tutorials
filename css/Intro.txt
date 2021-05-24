@@ -1,0 +1,155 @@
+What is css ?
+
+    Cascading style sheet
+    we use to style an html document
+
+    syntax :    h1 { color:blue; font-size:16px }
+                 { property:value; property:value } ->Decleration
+                 h1 -selector 
+
+how many ways to insert css ?
+
+    External CSS
+    Internal CSS
+    Inline CSS
+
+Selectors 
+    id selector         - #
+    class selector      -  . 
+    element selector    - h1/p/div
+    grouping selector   - h2,p,li,a
+    universal selector  - *
+
+The universal selector (*) has low specificity, while ID selectors are highly specific! 
+
+how to calculate specificity
+    add 100 for each ID
+    add 10 for each attribute,
+    class or pseudo-class, add 1 for each element name or pseudo-element.
+
+    pseudo-classes such as :hover, :focus etc.
+    pseudo-elements such as :before, :after etc.
+
+comments:
+
+    /* */ -- single line comments
+    /* 
+        */ ---> multi line comment
+
+
+colors
+--------
+three types
+    - RGB  --> red,green,blue
+    - HEX  --> #000 /#ffffff
+    - HSL  --> [hue(0), saturation[100%],lightness(50%)]
+
+
+Background properties:
+
+    background-color
+
+    background-image
+        background-image: url("paper.gif");
+    background-repeat
+         background-repeat: repeat-x;
+                        :   no-repeat
+                        :   repeat-y
+    background-attachment   
+            inital 
+            inherit
+            scroll
+            fixed
+    background-position
+            top right bottom left
+
+    background (shorthand property)
+        body{
+            background: #ffffff url("img_tree.png") no-repeat right top;
+        }
+
+Border:
+    width,style(required),color
+
+margin/padding
+    top
+    right
+    bottom
+    left
+    auto
+
+ margin: 25px 50px 75px 100px;(t,r,b,l)
+ margin: 25px 50px 75px;(top,[l,r],bottom)
+ margin :1px 10px;(t&b ,l&r)
+ margin: 35px
+
+height/width:
+    auto 
+    lenght
+    %
+    initial
+    inherit
+
+boxmodel
+    content,padding,border,margin
+
+outline:
+    style
+    color
+    width
+    offset
+
+text
+    text-align-- center/left/right/justify
+    verticle-align  - top/middle/bottom
+    text-directio - rtl/ltr
+    text-transform - uppercase/lowercase/capitalize/
+
+links:
+    a:link{
+        color:red;
+    },
+    a:active{
+        color:blue;
+    },
+    a:hover{
+       color: pink
+    }
+    a:visit{
+        color:blue
+    }
+
+lists:
+    list-style-type:none/disc/sqare/circle
+
+Display:
+    none/inline/block
+
+visibility:
+        hidden
+
+position:
+    static      - permanent position
+    relative    - indent
+    fixed       - fixed
+    absolute    - change the position with in the 100% w/h
+    sticky      - 
+
+overflow
+    visible
+    hidden
+    scroll/scoll-x/scroll-y
+    auto
+
+float:
+    left/right/none
+
+opacity:
+    0-1.0
+
+combinators
+    here are four different combinators in CSS:
+    descendant selector (space)
+    child selector (>)
+    adjacent sibling selector (+)
+    general sibling selector (~)
