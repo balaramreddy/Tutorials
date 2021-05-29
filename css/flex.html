@@ -1,0 +1,45 @@
+<html>
+<head>
+<style> 
+#main {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #c3c3c3;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+#main div {
+  width: 50px;
+  height: 50px;
+}
+
+/* div:nth-of-type(2) {
+  flex-basis: 100px;
+} */
+
+/* #main div:nth-of-type(1) {flex-grow: 1;}
+#main div:nth-of-type(2) {flex-grow: 1;}
+#main div:nth-of-type(3) {flex-grow: 1;}
+#main div:nth-of-type(4) {flex-grow: 1;}
+#main div:nth-of-type(5) {flex-grow: 1;} */
+
+</style>
+</head>
+<body>
+
+<h1>The flex-wrap Property</h1>
+
+<div id="main">
+  <div style="background-color:coral;">A</div>
+  <div style="background-color:lightblue;">B</div>
+  <div style="background-color:khaki;">C</div>
+  <div style="background-color:pink;">D</div>
+  <div style="background-color:lightgrey;">E</div>
+  <div style="background-color:lightgreen;">F</div>
+</div>
+
+<p><b>Note:</b> Internet Explorer 10 and earlier versions do not support the flex-wrap property.</p>
+
+</body>
+</html>

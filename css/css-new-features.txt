@@ -1,0 +1,105 @@
+Flex
+-------
+The flex property sets the flexible length on flexible items.
+    display - flex,block
+    flex-basis
+        specifies the initial lenght of flex item.
+        flex-basis:100px;
+
+    flex-direction: 
+        row
+        column
+        column-reverse
+        row-reverse;
+        unset
+
+    flex-wrap
+        wrap
+        nowrap
+        wrap-reverse
+
+    flex-flow
+        flex-direction
+        flex-wrap
+    
+    flex-grow
+        property specifies how much the item will grow relative to the rest of the flexible items inside the same container.
+        default -0
+    
+    flex-shrink
+        The flex-shrink property specifies how the item will shrink relative to the rest of the flexible items inside the same container.
+        default -1
+    
+grid-layout
+    - making it easier to design web pages without having use to floats and positioning.
+    
+        display: grid,inline-grid
+        grid-row-gap
+        grid-column-gap
+        grid-gap :10px,20px
+        grid-area:
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-row-end: 3;
+            grid-column-end: 3;
+
+content-visibility:
+    visible
+    hidden
+    auto:
+
+Transitions
+    transition
+    transition-delay
+    transition-duration
+    transition-property
+    transition-timing-function
+
+Css:
+    CSS stands for Cascading Style Sheets
+    CSS describes how HTML elements are to be displayed on screen, paper, or in other media
+    CSS saves a lot of work. It can control the layout of multiple web pages all at once
+    External stylesheets are stored in CSS files
+
+Sass:
+     Sass is an extension to CSS
+        Sass is a CSS pre-processor
+        Sass is completely compatible with all versions of CSS
+        Sass reduces repetition of CSS and therefore saves time
+        Sass is free to download and use
+        
+    Why Use Sass?
+        Stylesheets are getting larger, more complex, and harder to maintain. This is where a CSS pre-processor can help.
+    
+    How Does Sass Work?
+        A browser does not understand Sass code. Therefore, you will need a Sass pre-processor to convert Sass code into standard CSS.
+        This process is called transpiling. So, you need to give a transpiler (some kind of program) some Sass code and then get some CSS code back.
+
+    Sass File Type
+        Sass files has the ".scss" file extension.
+    
+Less
+    Lerner stylesheets
+    it is a backwards-compatible language extension for CSS. 
+    LESS is a CSS pre-processor that enables customizable, manageable and reusable style sheet for website. 
+    LESS is a dynamic style sheet language that extends the capability of CSS. 
+    LESS is also cross browser friendly.
+
+    Why LESS?
+    Let us now understand why do we use LESS.
+        LESS supports creating cleaner, cross-browser friendly CSS faster and easier.
+        LESS is designed in JavaScript and also created to be used in live, which compiles faster than other CSS pre-processors.
+        LESS keeps your code in modular way which is really important by making it readable and easily changeable.
+        Faster maintenance can be achieved by the use of LESS variables.
+    Features
+        Cleaner and more readable code can be written in an organized way.
+        We can define styles and it can be reused throughout the code.
+        LESS is based on JavaScript and is a super set of CSS.
+        LESS is an agile tool that sorts out the problem of code redundancy.
+
+    Advantages
+        LESS easily generates CSS that works across the browsers.
+        LESS enables you to write better and well-organized code by using nesting.
+        Maintenance can be achieved faster by the use of variables.
+        LESS enables you to reuse the whole classes easily by referencing them in your rule sets.
+        LESS provides the use of operations that makes coding faster and saves time.
