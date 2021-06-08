@@ -1,0 +1,263 @@
+what is angular ?
+--------------------
+    •	Angular is a Java script framework to build client-side applications.
+    •	It is Great for single-page applications.
+    •	Refresh automatically without reloading the webpage.
+    •	Angular promotes a modular approach (application build having clear structure).
+    •	Making use of components we have a lot of reusable code.
+    •	Angular has a lot of inbuilt capabilities such as routing, validation, etc which makes the development easier and quicker.
+    •	Angular is a product of Google and uses the typescript language for Microsoft.
+
+version history 
+-----------------------
+    AngularJS
+        •	AngularJS is also called angular 1
+        •	It was introduced in 2010.
+        •	Angular 1 is the first version of the angular framework.
+        •	It was based on Java script language
+    Angular 2 --> 2016 sep-2
+        •	It is completely rewritten the angular 1.
+        •	It was introduced in the year of 2016 September.
+        •	It was based on typescript
+        •	Angular 2 is mobile-oriented 
+        •	The major drawback is not capable to support the mobile app
+    Angular3
+        •	Angular 3 was skipped due to the misalignment of the router package version.
+    Angular 4 
+        •	Angular 4 was introduced in March 2017.
+        •	Angular 4 is an Enhancement of angular 2.
+        o	inbuilt animation packages
+        o	ng template
+        o	form validation attributes
+        o	title case
+    Angular 5
+        •	Angular 5 was Introduced in November 2017.
+        •	Faster compared to the previous version of angular and smaller in size.
+        •	Various features in angular 5
+        o	HTTP client API
+        o	multiple exports and alias
+        o	pipes for numbers, data, and currency
+    Angular 6 
+        •	Angular 6 was introduced in May 2018.
+        •	Features came with the release of angular 6 
+        o	Updation of angular CLI ( command-line interface )
+        o	Updation of angular CDK (component development kit)
+    Angular 7 
+        •	Angular 7 was introduced in October 2018.
+        •	Enhancement of Angular 6
+        •	Feature of Angular 7 is:
+        o	Cli promotes
+                	Helps the user makes a decision
+                	It asks user want to add routing  (y/N)
+                	About style, user want to use like CSS/sass/less
+        o	Application performance
+        o	Virtual scrolling
+        o	Drag and drop  automatic rendering features
+        o	Bundle budget 	
+        	Bundle size is more than 2MB
+        	Waring msg provided for above 5 MB
+    Angular 8
+        •	Angular 8 was introduced in May 2018.
+        •	Dynamic imports for route configurations.
+        •	Customize the angular CLI commands like ng Build, ng test, ng run.
+        •	Ng deploy is added in the angular CLI 8.3.0
+    Angular 9 
+        •	Angular 9 was introduced in February 2020.
+        •	Angular 9 came up with an ivy compiler.
+        o	From version 9 all applications are moved to ivy compiler and runtime by default.
+        o	It provided the following advantages.
+                	Smaller Bundle Size
+                	Faster Testing
+                	Better Debugging
+                	Improved CSS class and style binding
+                	Improved Type Checking
+                	Improved build errors
+                	Improved build times, enabling AOT on by default
+                	Improved Internationalization.
+        o	New Options for provided-In property in @Injectable Decorator, In addition to the previous root and module options, you have two additional options.
+        o	Platform: Specifying provided-In: 'platform' makes the service available in a special singleton platform injector that is shared by all applications on the page.
+        o	Any Provides a unique instance in every module (including lazy modules) that injects the token.
+
+    Angular 10 
+        •	Angular 10 was introduced in June 2020.
+        •	Angular 10 is the smallest release compared to other releases
+        •	TSLint has updated v2.0
+        •	TSLib has updated v6
+        •	New default browser configuration.
+        •	Optional stricter setting
+        •	Warnings about common.JS imports
+
+Angular 11 
+    •	Angular 11 was introduced in November 2020.
+    •	Automatic inline of fonts.
+    •	Component test harnesses – provide a robust and legible API service.
+    •	Improved reporting and logging.
+            o	We’ve made changes to the builder phase reporting to make it even more helpful during development.
+            o	 
+    •	Updated hot module replacement
+
+    
+installing angular cli and run angular app?
+------------------------------------------------
+    node -v
+    npm -v
+        npm install npm@latest -g
+
+    CLI - Command Line Interface
+
+    To install the Angular cli ;
+        - npm install -g @angular/cli          --> I have installed this earlier.
+        - npm install -g @angular/cli@latest   --> by using this command we can get the updated angular/cli version.
+        - npm i -g @angular/cli
+
+    To uninstall the Angular/cli:
+        - npm uninstall @angular/cli 
+        - npm uninstall -g @angular/cli 
+
+        here -g represents globally
+
+            prefix with double dash (--) represents - optional names
+            prefix with single dash (-) represents - optional aliases
+
+        - npm cache verify  - to verify the cache
+        - npm cache clean
+            whenever we install a package with command npm install<package> ,npm stores the cache inside the user file system.
+            Default directory where the cache data is stored on windows is 
+            C:\Users\name\AppData\Roaming\npm-cache
+
+            so we need to clean the cache first
+            cache can be clean by using the above command.
+
+    To check the current version of Angular cli
+        - ng version
+
+
+    ng new my-dream-app
+    cd my-dream-app
+   
+    ng serve 
+    ng serve -o
+    ng serve --port 3000 -o	/ng serve --port=4300					===> to run on differnet port number
+
+installing bootstrap framework
+-------------------------------
+    npm install bootstrap --save          		==> To install bootstarp in to app 
+	npm install bootstrap@next --save			==>to get next latest version
+
+    after intsall bootsrap check wheather boostrap is install or not install in (package.json - dependencies )
+
+    then add path to angular.json
+
+    npm i bootstarp jquery propper --save 
+					
+					 "styles": [
+					  "src/styles.css",
+					  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+					],
+					"scripts": [
+					  "node_modules/bootstrap/dist/js/bootstrap.min.js",
+					  "node_modules/jquery/dist/jquery.min.js"
+					]
+
+angular folder strecture and bootprocess
+-------------------------------------------
+    E2E - end to end scripts will be resuding
+           - to run end to end test cases we used protractor-framework 
+                we also used jasmin(language it used for unit testing) and karma runner
+                
+           - app.po.ts - it is protractor file which will have "po" file
+           - app.e2e.spec.ts 
+                e2e - tells that this scripts is end to end function test script
+                spec - whenever spec added that means that it is test script
+    
+    node_modules
+        new package install in it
+        this is folder where all modules and libraries resides
+        add/remove modules/packages
+        we will not touch this folder for development purpose
+
+    src 
+    ------
+        this is the main workarea/app code resides inside the folder
+        this is the basic foder strecture
+        app folder is the place where you will see components,modules, directives,services,pipes etc
+        
+        app.components.ts [where you see components - it means that file corresponds to a component]
+        
+        app.module.ts [it means these are service files]
+            Module can import or exports the code as required and finally render the view in browser
+       
+        app.service.ts
+            Service contain the business logic
+
+    assets
+        icons,images,styles
+
+    env 
+        configure variables pipelines for dev test,stage,and prod
+
+    polyfills
+         if the user browser is outdated one pollyfills will add thw backword functionality
+
+    main.ts 
+        booting the angular application
+
+        bootprocess
+        this is the first file that angular will check to load start an angular application
+        we need atleast one module present to be present in our main.ts
+        by default the module that's inside the main.ts is - appmodule
+
+        bootsrapmodule is the on ewhich loads and starts the application
+        this is not related to bootstrap framework 
+
+        yes we can change the default app module to something else
+            we can write custom module and then load into bootsrapmodule
+    
+    test.ts
+        test scripts for booting process
+        all the code inside main.ts is tested here in this file
+    
+    style.css
+        global stylesheet
+        dont make it heavy
+        generic/common typography, fonts, styles
+    
+    angular.json
+       this is the file for all configuration of our angular project
+    
+    karma.conf.js
+        karma runner for running our unit test scripts
+        config our test scripts
+
+    tslint.json
+        linting or coading standards indentation, semicolon, where it is strat and end
+
+    ts confing.json 
+        build and compilation related to angular application
+
+   
+   package.json and pacakge.lock.json
+   ----------------------------------
+   import for interview
+   import for developer and qa need to understsand how to work
+   
+    package.json
+        to understand any existing angular application always refer to package.json to see the scripts
+
+    semantic versioning
+        Three major components (10.0.1)
+            Major (10) 
+            Minor (0)
+            Patch (1)
+
+        npm run start  
+
+    package.lock.json
+    - we can see all indetail details about packages
+    
+    how does angular application works
+        -> Every Angular app consists of a file named angular.json.
+        -> This file will contain all the configurations of the app.
+        -> While building the app, the builder looks at this file to find the entry point of the application. 
+        -> Inside the build section entry point of application is Main.ts
+        -> The main.ts file creates a browser environment to run the application, along with this it also calls a function bootstrap Module, which bootstraps the application
