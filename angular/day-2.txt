@@ -1,0 +1,350 @@
+Summary of angular
+-------------------------
+•	Angular apps are in modular in nature.
+•	Angular apps are collection of individual modules
+•	Angular app contain one or more modules.
+•	Module contain one or more components
+•	Components contain HTML + class to control the logic or view 
+•	Service contain the business logic
+•	Module can import or exports the code as required and finally render the view in browser.
+
+Decorators in Angular
+----------------------
+    it is a typescript features used for passing metadata
+    Decorators are functions?
+        yes that will return functions
+    decorators are invoked at runtime
+    decorators allow us to invoke functions
+
+    types of decorators in angular
+         class Decorators       - @NgModule - it is in app.module.ts, @component    - it is in component
+         property decorators    - @input,@output    it is inside the class
+         method decorators      - @hostListener     event decorators
+         parameter decorators   - @inject        it is service
+
+    decorators are start with @ symbol
+
+component creation
+-------------------
+    smaller set of functionality which can be reuse multiple times.
+    easy to maintain and develope
+    it follows tree heirarchy
+        products 
+            create products
+            update products
+            delete products
+            get products
+        
+    ng g c component-name  ==> to create component            ==>ng = node-generator ,g =>generate ,c => component
+
+    ng g c componentname -it -is --skip-tests
+		-it --> inline template
+		-is --> inline style
+	    --skip-tests --> to remove spec.ts file
+
+    --> lazy-loading ==> ng g m products --route products --module app.module
+    --> routing and module at a time ==> ng g module [module-name] --routing
+
+    Component	-> ng g component my-new-component
+    Service		-> ng g service my-new-service
+    Interface	-> ng g interface my-new-interface
+    Module		-> ng g module my-module
+    Guard		-> ng g guard my-new-guard
+    Directive	-> ng g directive my-new-directive
+    Pipe		-> ng g pipe my-new-pipe
+    Class		-> ng g class my-new-class
+
+Directives
+------------
+component directive
+	every angular application must have atleast one component
+    it has it's own template and style
+
+strectural directive
+	updates strecture of view
+    *ngIf,  - contitinal based
+				<div *ngIf="showmsg"> showing this msg form if true statement</div>
+				showmsg = fasle;
+    *ngFor, - iterate over set of data and do some operations.
+
+				users =[
+			{id:1,name:'john'},
+			{id:2, name:'jack'}
+		]
+				<div *ngFor="let user of users">
+			<p>{{user.id}}</p>
+			<p>{{user.name}} </p>
+			</div>
+
+    *ngSwitch - 
+		built in directive
+		start with ngSwitch case
+		it is used to compare more than one expression ata time
+		boolaen values - true/false
+
+		example:
+		<div [ngSwitch]="switchvalue" >
+			<div *ngSwitchCase="1">value passed is: 1 </div>
+			<div *ngSwitchCase="2">value passed is: 2 </div>
+			<div *ngSwitchCase="3">value passed is: 3 </div>
+			<div *ngSwitchDefault>this is default value</div>
+		</div>
+		switchvalue = 2;
+
+attribute directives
+    ng style
+		<div *ngIg="showmsg" [ngStyle]='{color:"red"}'> showing this msg form if true statement</div> static
+		<div *ngIg="showmsg" [ngStyle]='{color:colorname}'> showing this msg form if true statement</div>
+			colorname= 'green'
+    
+	ngclass
+		
+		it is a directivewhich is used to set the class name for Dom Elements
+		ngClass="'one'"
+		casesensitive
+
+		<div [ngClass]="'one'">this is ngclass example</div>
+
+		in css:
+
+		.one {
+				color:blue;
+		}
+
+Routing
+--------------
+ Routing is a machanism used by angualar framework to manage the "paths" / "routes" of angular applications.
+ routing strategy helps in navigation b/w various views.
+ angular is a component driven framework which means configuring varuous routes;
+ angular framework comes with a package called Router. which has every thing need to design, develop and implemets routes and navigation links.
+ it is singleton- which means only one instance of the router in angular application.
+ 
+ we can handled the various types routes in angular application
+	-> 	routes for components
+	-> 	getting query params form routes
+	-> 	getting the url segments
+	->  loading child routes for a module
+	->  lazy loading
+    ->  handling wild card routes (handling 404 route)
+    ->  handling default routes
+    ->  route gaurds
+
+		
+	->  Routing Stratigies:
+		-----------------------
+		located in providers -> app.module.ts
+		
+		1> path location strategy (by default )
+			/home				 -> default
+			/search?keywords=12  -> queryparams
+			/product/10			 -> childroutes
+			/product/10/views	 -> multiple child routes
+			
+		2> hash location strategy
+			/#/home
+			/#/products
+			
+	-> 	Base Href
+		-------------
+		Angular is a single page application which means there will be only one html file.
+		Bydefault basehref is set to '/'
+		BaseHREF IS present in index.html.
+		
+	->  Routing Module
+		--------------
+		It is place holder for configuring all routes and navigation in one module
+		Best practice is configure all routes in one single place
+		easy to maintain and debug.
+		
+		we need to import modules from the package.
+		-> import { Routes ,RouterModule } from '@angular/router'
+		
+		import it form imports array 
+		
+	->  Router Outlet
+		-------------
+		Dynamically load the Created routes.
+		Every angular application having more than pne router Outlet.
+		we can have more than one router outlet in  our application .
+			.we can specify the named router outlet in our application
+
+			named routeroutlets
+	
+	->	parameterized routes
+		--------------------
+		{ path:'product/:id',component:'productcomponent' }
+		
+		
+		parameterquery ='';
+		
+		constructor(private activatedroute:ActivatedRoute){
+				this.activatedroute.params.subscribe(data =>{
+				this.parameterquery = data.id
+			})
+
+		}
+		
+		ngOnInit():void {		}
+
+	->  handling default routes or redirecting routes
+		-----------------------------------------------
+		{path:'',redirectTo:'home',pathmatch:'full'}
+
+	
+	->  handling wild card routes/404 route
+		--------------------------------------
+		{path:'**', component:'pagenotfoundcomponent'}	
+
+	-> child routes:
+
+			const routes: Routes = [
+				{
+					path: '',redirectTo: 'admin',pathMatch: 'full'
+				},
+				{ path: 'admin', component: AdminComponent,
+				children:[
+					{ path:'', redirectTo:'/admin/(admin:addproduct)',pathMatch:'full'},
+					{ path: 'addproduct',component: AddproductComponent,outlet:'admin' },
+					{ path: 'viewproducts',component: ViewproductComponent,outlet:'admin'},
+					{ path :'addupcomingproject',component:AddUpcomingprojectComponent,outlet:'admin'},
+					{ path :'viewupcomingproject',component:ViewUpcomingprojectComponent,outlet:'admin'},
+					{ path :'addclient',component:AddclientComponent,outlet:'admin'},
+					{ path :'viewclient',component:ViewclientComponent,outlet:'admin'},
+					{ path :'addevent',component:AddeventComponent,outlet:'admin'},
+					{ path :'viewevent',component:VieweventComponent,outlet:'admin'},
+					{ path :'addprofile',component:AddprofileComponent,outlet:'admin'},
+					{ path :'viewprofile',component:ViewprofileComponent,outlet:'admin'}
+					]
+				},
+			]
+
+	->  lazy loading
+		------------
+		Load the modules when they are required .
+		By default ngModule is EagelryLoading .
+		All modules are loaded as soon as app is loaded
+			it makes our application heavey
+			bundle size increases 
+			slow down the performance
+			
+		*** ng g m home --route home --module app.module
+			
+	->  Route Gaurds
+		-------------
+		route gaurds are used to secure the route paths.
+		
+		eg: if the user is not logged in 
+			user does't see the orders route
+			
+			if the user is loged in 
+			user should see the order route.
+			
+		when ever implement routegaurd it will give the booldean value ( true-1 false -0)
+		
+		ng g gaurd <name> 	-> it will ask the 4 interfaces available
+		
+			canActivate  	-> check to see if a user can visit a route.
+			canActivateChild-> check to see if a user ca visit a route children
+			canDeactivate 	-> check to see if a user can exit a route
+			resolve 		-> performs route data retrive before route activation
+			canLoad			-> check to see if a user can route to module that lazyLoading
+
+forms:
+	template driven forms 
+	Reactive forms
+
+	Template driven forms:
+	--------------------------
+		easy to use 
+		simple and straight forword
+		all validators, form elements are all define in template file.
+		forms are tracked automatically
+		use two way databinding techniques to bind data
+		most of code resides indide the template
+		validators are mostly the default html5 validations
+		unit testing will be a challenge
+
+	1. import forms and reactive forms in app.module.ts
+	
+	with out validation
+	--------------------------------
+			
+		2. <div class="container">
+		<div class="row w-100 p-2">
+			<div class="col-md-6">
+			
+			<form #eventform="ngForm" (ngSubmit)="eventsubmit(eventform)">
+				<div class="form-group">
+				<label for="Image">Image Url</label>
+				<input 
+						type="text" 
+						class="form-control" 
+						id="Image" 
+						name="eventimage"
+						ngModel
+					/>
+				</div>
+
+				<div class="form-group">
+				<label for="Name">Name</label>
+				<input
+					type="text"
+					class="form-control"
+					id="Name"
+					name="eventname"
+					ngModel
+				/>
+				</div>
+
+				<div class="form-group">
+				<label for="Description">Description</label>
+				<textarea 
+					rows="3"
+					class="form-control" 
+					id="Description" 
+					name="eventdescription"
+					ngModel> </textarea>
+				</div>
+
+				<button type="submit" class="btn btn-sm btn-primary">Submit</button>
+			</form>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		</div>
+
+		app.module.ts
+		----------------------
+		eventsubmit(eventform:NgForm){
+			console.log(eventform.value.name)
+			console.log(eventform.value)
+		}
+
+		validation in three types
+		------------------------------
+
+		1.heighlighting error with color
+		----------------------------------
+		input.ng-invalid.ng-touched{
+			border:1px solid red;
+		}
+
+		2.disabling the submit button
+		-----------------------------------
+			by adding attribute [disbaled]="!formName.valid";
+				
+				ex: <button type="submit" class="btn btn-sm btn-primary" [disabled]="!eventform.valid">Submit</button>
+				
+
+		3. custom field level validations - show hide error messages;
+		-------------------------------------------------------------
+			<span *ngIf="firstname.touched && !firstname.valid">please enter name < span>
+			
+			
+			#eventimage="ngModel"    -> if we not put in input field we will get the below error
+			
+			
+			TS2339: Property 'eventimage' does not exist on type 'AddeventComponent'.
+
+			<small class="form-text text-muted" *ngIf="eventimage.touched && !eventimage.valid">please enter the image url</small>
+			
