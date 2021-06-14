@@ -1,3 +1,165 @@
 Reactive forms:
 ---------------
-also called dynamic forms
+    Also called dynamic forms
+    All th from elements, userinteraction and validation are handled in the component class
+    we'll make use of angular's builtin formgroup and form control
+    using reactive forms we can control better data binding
+    define custom regular expression patterns of error handling
+    import reactive forms module in our appmodule
+    very flexibe and allows user to define develope complex requrements of forms
+    more logic in the component class and less in html markup itself
+
+    angular maintains state info of the forms at all times
+
+    ng-touched
+    ng-untouched
+    ng-valid
+    ng-invalid
+    ng-dirty
+
+
+    Step 1
+        import and add in reactive form module in the app.module.times
+        for template driven forms reactiveformsModule needs to be imported
+        if we not import this module we'll get the error
+        add the module into array list of imports
+
+    step2
+         create the form in app.component.html
+         form-group
+            we need to use the directives formgroup for the entire form and give it a name
+
+         form-control-name
+            every form field should have a "formControlName" attribute
+
+          <form  [formGroup]="checkoutForm" (ngSubmit)="postData()">
+                <input type="text" formControlName='fname'>
+                <input type="text" formControlName='lname'>
+                <input type="email" formControlName='email'>
+                <input type="submit" value= "postdata" [disabled]="!checkoutForm.valid">
+            </form>
+
+    step3
+
+        import { Component, OnInit } from '@angular/core';
+        import { FormBuilder,FormGroup,FormControl } from '@angular/forms';
+
+        #note#
+        -------
+        error- Property has no initializer and is not definitely assigned in the constructor
+
+        Just go to tsconfig.json and set
+
+            "strictPropertyInitialization": false
+                        or
+            "strict": false,
+    step #4
+        constructor(private formbuilder= FormBuilder)
+
+    step #5
+        this.registerform = formBuilder.group({
+            fname.new FormControl(),      these are group of form elements
+            lname.new FormControl()
+        });
+
+
+    step#6  - in html form
+    (ngSubmit)="postData();"  in ngSubmit s is capital ,it is case sensitive
+
+      postData(){
+    console.log(this.checkoutForm)
+  }
+
+  Validators in template drivenform
+
+  approach #1  Highlighting the error
+  ---------------------------------------------
+            input.ng-invalid.ng-touched{
+                border:1px solid red;
+            }
+
+        this.checkoutForm = fb.group({          
+          email: ['',Validators.required],
+          password: ['',Validators.required],
+          terms: ['',Validators.requiredTrue]
+        })  
+
+approach #2  - disabled submit button
+-------------------------------------
+      <button type="submit" class="btn btn-sm btn-primary" [disabled]="!checkoutForm.valid">Submit</button>
+
+approach #3 -customlevel validation
+------------------------------------
+<div class="form-group pb-2">
+        <label for="exampleInputEmail1">Email address</label>
+        <input 
+        type="email" 
+        class="form-control"
+        id="exampleInputEmail1" 
+        formControlName="email">
+        <span *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').hasError('required')" > Enter email adress</span>
+        <span *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').hasError('email')" > Enter valid email adress</span>
+        <span *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').hasError('minlength')" > Minimum lenght is 5</span>
+        <span *ngIf="checkoutForm.get('email').touched && checkoutForm.get('email').hasError('maxlength')" > Max Lenght is 10</span>
+
+    </div>
+
+this.checkoutForm = fb.group({          
+          email: ['',[ Validators.minLength(5),
+                      Validators.maxLength(10),
+                      Validators.required,
+                      Validators.email
+                     ]
+                  ], 
+          password: ['',Validators.required],
+          terms: ['',Validators.requiredTrue]
+        }) 
+
+Form group - get values
+-----------------------
+    we can get values of a forms feilds/controls from the form
+    
+    syntax to read the value of entire form
+        this.formname.value
+
+    console.log(this.checkoutForm);
+    console.log(this.checkoutForm.value);
+
+    syntax to read the value of an individual form control
+        this.formname.get('feildname').value
+
+        console.log('emailadress' +" : "+ this.checkoutForm.value.email);
+
+
+Formgroup -setvalues:
+
+    setvalues in th form  - setvalues
+    ----------------------------------
+        we can set the values of entire form using SetValue();
+            we need to set the values of each and every feild of the form
+            we cannot omit any feild in the form
+
+            syntax:
+                this.checkoutForm.setValue({
+                    email: 'balaramreddy@gmail.com',
+                    password: '12345',
+                    terms: true
+                 })
+
+    patchvalue in form - patchvalue
+    ---------------------------------
+            this.checkoutForm.patchValue({
+                    email: 'balaramreddy@gmail.com',
+                    password: '12345',
+                    terms: true
+                 })
+
+    form group -resetForm
+    ----------------------
+    it is important that we reset iur form to avoid duplicatevalues getting added
+
+        Reset form - reset()
+            we can reset the entire form using reset() method;
+
+            syntax:
+                this.registerform.reset();
