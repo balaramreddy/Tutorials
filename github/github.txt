@@ -1,0 +1,63 @@
+Git 
+---------
+git config --global user.name "balaram Reddy"
+git config --global user.email "balaramreddyappala@gmail.com"
+git config --list 
+git config user.name
+git congig user.email
+gti branch 
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M master
+git remote add origin <remote url>
+git push -u origin master
+
+
+…or push an existing repository from the command line
+git remote add origin <remote url>
+git branch -M main
+git push -u origin main             -u -->upstream 
+
+git remote -v         --> to know the remote url
+git checkout master   --> switch b/w branches
+git reset head~1      --> to reset the last commit
+rmdir /s .git   =>This will undo the changes made by the “init” command.
+rmdir .git      => `to remove git directory
+
+git commands
+-------------
+git init
+git add .
+git commit -m 'first commit'
+git push heroku master
+
+if u want to remove existing commits
+------------------------------------
+create a file .gitignore in that give the folders names what ever u want to remove.
+git reset
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+git checkout -b main 		-> to create new branch
+git status/git branch		-> to check the git branch
+git branch -D master		-> to delete the master branch
+
+error: remote origin already exists.
+-------------------------------------
+git remote rm origin   - remove already existing origin, then add another origin
+
+git branch (-m | -M) [<oldbranch>] <newbranch>
+git branch (-c | -C) [<oldbranch>] <newbranch>
+git branch (-d | -D) [-r] <branchname>…​
+git branch --edit-description [<branchname>]
+
+ https://docs.emmet.io/cheat-sheet/
+ 
+ http://guides.beanstalkapp.com/version-control/common-git-commands.html
+ https://dzone.com/articles/top-20-git-commands-with-examples
+ https://www.freecodecamp.org/news/10-important-git-commands-that-every-developer-should-know/
+ https://git-scm.com/docs
+

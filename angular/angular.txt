@@ -8,6 +8,7 @@ what is angular ?
     •	Angular has a lot of inbuilt capabilities such as routing, validation, etc which makes the development easier and quicker.
     •	Angular is a product of Google and uses the typescript language for Microsoft.
 
+
 version history 
 -----------------------
     AngularJS
@@ -140,16 +141,24 @@ installing angular cli and run angular app?
     ng serve --port 3000 -o	/ng serve --port=4300					===> to run on differnet port number
 
 installing bootstrap framework
--------------------------------
-    npm install bootstrap --save          		==> To install bootstarp in to app 
-	npm install bootstrap@next --save			==>to get next latest version
+---------------------------------
+    We can use bootsrap framework in two ways
+        1.using cdn
+            take the cdn url of styles and scripts and link in the html files
 
-    after intsall bootsrap check wheather boostrap is install or not install in (package.json - dependencies )
+        2.using Npm package manager
+            step-1 
+                For bootsrap4 
+                    npm i bootsrap jquery popper --save
 
-    then add path to angular.json
+                for bootsrap 5
+                    npm i bootstrap propper --save
 
-    npm i bootstarp jquery propper --save 
-					
+    after intsall bootstrap check wheather boostrap is install or not install in (package.json - dependencies )
+                
+            step 2
+                update styles and scripts in angular.json
+
 					 "styles": [
 					  "src/styles.css",
 					  "node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -163,7 +172,6 @@ angular folder strecture and bootprocess
 -------------------------------------------
     E2E - end to end scripts will be resuding
            - to run end to end test cases we used protractor-framework 
-                we also used jasmin(language it used for unit testing) and karma runner
                 
            - app.po.ts - it is protractor file which will have "po" file
            - app.e2e.spec.ts 

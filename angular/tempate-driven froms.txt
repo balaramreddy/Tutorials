@@ -1,0 +1,95 @@
+Template driven forms:
+	--------------------------
+		easy to use 
+		simple and straight forword
+		all validators, form elements are all define in template file.
+		forms are tracked automatically
+		use two way databinding techniques to bind data
+		most of code resides indide the template
+		validators are mostly the default html5 validations
+		unit testing will be a challenge
+
+	1. import forms and reactive forms in app.module.ts
+	
+	with out validation
+	--------------------------------
+			
+		2. <div class="container">
+		<div class="row w-100 p-2">
+			<div class="col-md-6">
+			
+			<form #eventform="ngForm" (ngSubmit)="eventsubmit(eventform)">
+				<div class="form-group">
+				<label for="Image">Image Url</label>
+				<input 
+						type="text" 
+						class="form-control" 
+						id="Image" 
+						name="eventimage"
+						ngModel
+					/>
+				</div>
+
+				<div class="form-group">
+				<label for="Name">Name</label>
+				<input
+					type="text"
+					class="form-control"
+					id="Name"
+					name="eventname"
+					ngModel
+				/>
+				</div>
+
+				<div class="form-group">
+				<label for="Description">Description</label>
+				<textarea 
+					rows="3"
+					class="form-control" 
+					id="Description" 
+					name="eventdescription"
+					ngModel> </textarea>
+				</div>
+
+				<button type="submit" class="btn btn-sm btn-primary">Submit</button>
+			</form>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		</div>
+
+		app.module.ts
+		----------------------
+		eventsubmit(eventform:NgForm){
+			console.log(eventform.value.name)
+			console.log(eventform.value)
+		}
+
+		validation in three types
+		------------------------------
+
+		1.heighlighting error with color
+		----------------------------------
+		input.ng-invalid.ng-touched{
+			border:1px solid red;
+		}
+
+		2.disabling the submit button
+		-----------------------------------
+			by adding attribute [disbaled]="!formName.valid";
+				
+				ex: <button type="submit" class="btn btn-sm btn-primary" [disabled]="!eventform.valid">Submit</button>
+				
+
+		3. custom field level validations - show hide error messages;
+		-------------------------------------------------------------
+			<span *ngIf="firstname.touched && !firstname.valid">please enter name < span>
+			
+			
+			#eventimage="ngModel"    -> if we not put in input field we will get the below error
+			
+			
+			TS2339: Property 'eventimage' does not exist on type 'AddeventComponent'.
+
+			<small class="form-text text-muted" *ngIf="eventimage.touched && !eventimage.valid">please enter the image url</small>
+			
