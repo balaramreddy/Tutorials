@@ -172,3 +172,92 @@ Formgroup -setvalues:
 
             syntax:
                 this.registerform.reset();
+
+    form group - value changes
+    --------------------------
+        it is important property of formcontrol formgroup and formarray.
+        value changes return as Observable
+        we need to subscribe to the Observable to read the value
+        value changes is a property of abstract control
+        value changes will emit an event every time there is any change in the values of the control changes.
+
+        approach #1 - for the form controls
+        -----------------------------------
+            when subscribe to the observable  - we'll get the latest changes value
+            here we can track the single input field.
+
+            syntax is in 
+            
+            valuechangedtracker = " ",   this will add above the constructor
+
+        ngOnInit(): void {
+            
+            this.checkoutForm.get('email').valueChanges.subscribe(data =>{
+            console.log(data);
+            })
+        }
+
+            //another way 
+
+                ngOnInit(): void {
+                
+                this.checkoutForm.get('email').valueChanges.subscribe(data =>{
+                this.valueChangetracker = data; 
+                })
+                    
+                in html:
+
+                <p>entered value : {{valuechangedtracker}}  
+            }
+
+        approach #2 - for entire form
+        -----------------------------
+        when subscribe to the observable - we will get the entire form but the values will be only for changed form control
+            when ever there is any change in form control
+            form will emit the event
+
+            syntax - is in
+
+            ngOnInit(): void {
+            
+            this.checkoutForm.valueChanges.subscribe(data =>{
+            console.log(data);
+            })
+        }
+
+    form group - status change:
+    ---------------------------
+        it is important property of formcontrol formgroup and formarray.
+        statusChanges returns an Observable
+        we need to subscribe to the Observable to read the value
+        statusChanges is a property of abstract control
+        StatusChange will emit an event every time there is any changes in validation status of the control changes
+
+    form group - StatusChanges
+    --------------------------
+    approach #1 - for the form controls
+    -----------------------------------
+        when subscribe to the observable - we will get the validation status of the control
+         syntax is in 
+            ngOnInit(): void {
+                
+                this.checkoutForm.get('email').stausChanges.subscribe(data =>{
+                console.log(data);
+                })
+            }
+    approach #2 - for the entire form
+    -----------------------------------
+        when subscribe to the observable - we will get the validation status of entire form
+        dynamically we can capture the state of validation of the "entire" form
+         syntax is in 
+            ngOnInit(): void {
+                
+                this.checkoutForm.stausChanges.subscribe(data =>{
+                console.log(data);
+                })
+            }
+
+FormArray - why form arrays
+=----------------------------
+
+
