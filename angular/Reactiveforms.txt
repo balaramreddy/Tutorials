@@ -26,6 +26,7 @@ Reactive forms:
 
     step2
          create the form in app.component.html
+
          form-group
             we need to use the directives formgroup for the entire form and give it a name
 
@@ -44,6 +45,8 @@ Reactive forms:
         import { Component, OnInit } from '@angular/core';
         import { FormBuilder,FormGroup,FormControl } from '@angular/forms';
 
+        checkoutForm: FormGroup;
+
         #note#
         -------
         error- Property has no initializer and is not definitely assigned in the constructor
@@ -54,12 +57,12 @@ Reactive forms:
                         or
             "strict": false,
     step #4
-        constructor(private formbuilder= FormBuilder)
+        constructor(private formbuilder: FormBuilder)
 
     step #5
         this.registerform = formBuilder.group({
-            fname.new FormControl(),      these are group of form elements
-            lname.new FormControl()
+            fname:new FormControl(),      these are group of form elements
+            lname:new FormControl()
         });
 
 
@@ -104,6 +107,8 @@ approach #3 -customlevel validation
 
     </div>
 
+    note if we use multiple Validators user square brackets there
+
 this.checkoutForm = fb.group({          
           email: ['',[ Validators.minLength(5),
                       Validators.maxLength(10),
@@ -139,12 +144,16 @@ Formgroup -setvalues:
             we need to set the values of each and every feild of the form
             we cannot omit any feild in the form
 
+            write it on ngOnInIt 
             syntax:
                 this.checkoutForm.setValue({
                     email: 'balaramreddy@gmail.com',
                     password: '12345',
                     terms: true
                  })
+
+            if we miss the one value it will throw the error
+                "must sypply a value for form control with name :'terms'
 
     patchvalue in form - patchvalue
     ---------------------------------

@@ -93,3 +93,7 @@ Template driven forms:
 
 			<small class="form-text text-muted" *ngIf="eventimage.touched && !eventimage.valid">please enter the image url</small>
 			
+git clone https://github.com/balaramreddy/TODO-app.git
+
+npm install
+ng serve
