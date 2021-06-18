@@ -1,0 +1,224 @@
+Observables in angular
+-----------------------
+what are Observables
+    it is part of rxjs library
+    it a Sequence of data which is emmitted Asynchronusely over the period of time
+        means that whenever there is change in data it is automatically updated and tracked by your Observables
+    Observables can deliver multiple values of type - literals messages or events ,depending upon the context
+    angular uses observables very frequently in most aync operations
+            ex: http,routing ,event handling
+
+what is an Observer
+----------------------
+    when we create an Observables, we keep track on the observable using Observer
+    Observer will contineosuly track the changes in Observable 
+    we can control when to start and end listening to the Observalbe using Observer
+    Observer has three methods that we can use
+
+Methods availabe in Observer
+        next(),
+        error(),
+        complete()
+
+What and How to subscribe
+    we have always "subscribe" to an Observable in order to process the data
+    we can have multiple subscribers for any given Observable
+    we can also unsubscribe form an Subscriber
+
+Multiple subscribers to single value
+    yes we can have multiple subscribers for any given Observable
+
+example
+----------
+    shoping cart example
+        user places an order
+            inital state of order is : in-progress
+            after sometime : processing
+            once it is complted : ccompleted
+
+            orderstatus :any;
+            data :Observable<any>;
+
+            constructor() { }
+
+            ngOnInit(): void {
+                
+                new Observable(observer =>{
+                setTimeout(() => {
+                    observer.next('inprogress')
+                }, 4000);
+
+                setTimeout(() => {
+                    observer.next('processing')
+                }, 8000);
+
+                setTimeout(() => {
+                    observer.next('complete')
+                }, 10000);
+                }).subscribe(val =>{
+                this.orderstatus = val
+                })
+
+    //another method
+
+            orderstatus :any;
+        data :Observable<any>;
+        data2:Observable<any>
+
+        constructor() { }
+
+        ngOnInit(): void {
+            
+            this.data =new Observable(observer =>{
+            setTimeout(() => {
+                observer.next('inprogress')
+            }, 4000);
+
+            setTimeout(() => {
+                observer.next('processing')
+            }, 8000);
+
+            setTimeout(() => {
+                observer.next('complete')
+            }, 10000);
+
+            setTimeout(() => {
+                observer.error();
+            }, 10000);
+
+            setTimeout(() => {
+                observer.complete();
+            }, 10000);
+            });
+            this.data.subscribe(val =>{
+            this.orderstatus = val
+            })
+
+        <p>order status :{{orderstatus}} </p>
+
+Dependancy Injection:
+---------------------
+    it is an important application design pattern
+    it is the ability to add the functionality of components at runtime
+    Dependancies are services or objects that class need to perform its functionality
+
+    A class which we call as "service"
+    service are reusable classes which can be shared b/w components
+    helps in increases the effiency of apps
+    we will load services whenever is requires for those components only
+    it is easy to maintain and faster in performance   
+
+what do we cover in Dependancies
+    service we create and Inject into our components
+    we will use decorator called @Injectable 
+
+services
+---------
+    service are allow us to create reusable common shared folder functionality b/w various modules and components
+    service are singleton -we need to create and inject services in component where we want to use them
+    services are injected into our application using dependancy Injection
+    services are an abstraction layer or process layer which consists of our business logic
+    services are compltely used for making HTTP requests to our endpoint Apis to req and receive the response
+    service can have a value, methods or combination of both.
+
+    services need not to be include in your modules
+    service are used for sharing daata b/w components
+    we can create any number of services
+    importing and inject service into components is called dependancy Injection
+    service are injected at runtime into component
+    code become highly efficeint and easy to maintain
+    the code becomes much easier to test
+    we can have a value or a method to the services
+
+    example:
+    --------
+        contacts modules
+            components 
+                create components
+                view components
+                edit components
+                delete components
+
+            services
+            --------
+            contacts.services.ts 
+                http
+                processing data
+                cleaning data
+     
+     ng g s <servie-name> ---> togenerate services
+
+     import {injectable } from '@angular/core'
+
+    under constructor
+         getContacts(){
+        const contactList =[
+        {contactId:1, name:'google'},
+        {contactId:2, name:'youtube'},
+        {contactId:3, name:'instagram'},
+        {contactId:4, name:'facebook'},
+        ];
+        return contactList;
+    }
+
+    then import into contacts-components.ts
+        import { ContactsService } from './contacts.service';
+
+        constructor(private contactservice:ContactsService) { }     ----> this called service injection
+
+         contactList= [];
+
+        ngOnInit(): void {
+            this.contactList = this.contactservice.getContacts()
+        }
+-------------------------------------------------------------------------------------------
+    HTTP client
+    ------------
+        Http client is used for performing HTTP requests and Responses
+        Http client service is availabe in the @angular/common/http package
+        the new http client service is availabe in the http client module which is used 
+            to initiate HTTP request and responses in angular apps
+        http client module needs to be imported into the module. usally in app module
+        http client aslo gives other useful functionality likeinterceptor headers etc
+
+    http client methods 
+        get()
+        put()
+        post()
+        delete()
+        head()
+        jsonp()
+        options()
+        patch()
+
+    Benifits of http clients
+    -------------------------
+        it includes Observable Apis
+        It can have the Http Header in options
+        it includes highly testability features
+        it includes typed requests - creates interface avoid that
+        it includes response objects
+        it includes req,res interception
+        it includes error handling
+    
+    Crud Operations Using HttpCLient
+    ---------------------------------
+    Create - usally a post mehod call
+    read - usally a get method call
+    update - usally a put method call
+    delet - delete method call
+
+
+    setting up Local server-  multiple options
+    ------------------------------------------
+    1> Using a mock API Server Like json-server
+    2> SettingUp XAMPP or WAMP
+    3> setting up using NOde and Expressjs
+
+    npm i -g Json-server
+        create db in assets
+        then change directory to assets folder
+    then compile the server using this command "Json-server --watch .\db.json"
+
+
+

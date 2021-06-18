@@ -127,7 +127,7 @@ Form group - get values
     syntax to read the value of entire form
         this.formname.value
 
-    console.log(this.checkoutForm);
+    console.log(this.checkoutForm);    
     console.log(this.checkoutForm.value);
 
     syntax to read the value of an individual form control
@@ -259,5 +259,6 @@ Formgroup -setvalues:
 
 FormArray - why form arrays
 =----------------------------
-
+    FormControl and formGroup helps in basic form with form elements
+    One of the most important feature working in reactive forms
 
