@@ -220,5 +220,194 @@ services
         then change directory to assets folder
     then compile the server using this command "Json-server --watch .\db.json"
 
+    HTTP Client Get Method
+    ----------------------
+        Making Api calls to retrive data from get method call
+        to make a call all we need is a endpoint or an api Url
+        we can also pass various parameters as an options to get call
+            .get('url',options:{});
+        we will use options to pass parameters like headers,params,responsetype,withCredentials etc...,
+            get ('url',options:{headers:{},params:{}});
+        the response type will be an observable
+        whenever the response is observable - we have to subscribe it in order to read values.
+
+    http client method options:
+    ---------------------------
+        HEADERS is of type headers
+        params :is of type http params
+
+    how to use httpclient Get method in 6 steps
+    ---------------------------------------------
+        import HttpClient Module in app Module
+
+        import HttpCLient in our service or component whenever we are making the HTTP request.
+            it is good practice to have all hTTP CALLS in service
+            Becomes reusable and easy to maintain code
+            easy to share b/w various components
+
+        inject the HttpCLient in the constructor methods of the class.
+
+        ng g i admin
+        
+        implement the get call method
+
+        import the service in to required calling component class
+
+        call the method to make ahttp request
 
 
+    HTTP Client POST Method
+    ----------------------
+        Making Api calls to submit the data is referred to as a post method call.
+        to make a call all we need is a endpoint or an api Url. and data need to submitted.
+            .post('url',body).
+
+        we can also pass various parameters as an options to get call
+            .post('url',body,options:{});
+
+        we will use options to pass parameters like headers,params,responsetype,withCredentials etc...,
+            post ('url',body,options:{headers:{},params:{}});
+
+        the response type will be an observable
+
+        whenever the response is observable - we have to subscribe it in order to read values.
+
+
+    http client method options:
+    ---------------------------
+        HEADERS is of type headers
+            set what type of data we are submitting
+            ex : json or plain text
+        params :is of type http params
+
+    how to use httpclient post method in 6 steps
+    ---------------------------------------------
+        import and add HttpClientModule in app Module
+            import {HttpClientModule} from '@angular/common/http'
+
+        import HttpCLient in our service or component whenever we are making the HTTP request.
+            it is good practice to have all hTTP CALLS in service
+            Becomes reusable and easy to maintain code
+            easy to share b/w various components
+
+        inject the HttpCLient in the constructor methods of the class.
+
+        implement the post call method
+
+        import the service in to required calling component class
+
+        call the method to make the http request
+
+  HttpCLient
+  -----------
+    Http client is used to performing Http request and Responses
+    Http client Service is availablr in the @nagular/common/http
+    the new httpclient service is included in the http client module which is used to initiate http request and response in angular apps
+    HttpClientModule is need to be imported in the module.usally app module
+    httpclient also gives other useful functionalities like interceptors ,headers ..etc    
+
+ HttpCLient Put Method
+ ---------------------
+    Making Api calls to submit to "update" the existing data is refered to as a put call.
+    To make a call we need an endpoint or API Url and data that need to be submitted
+        .put('url',body)
+    we can also pass various parameters as options to the put call
+        put('url',body,options:{});
+    we will use options to pass parameters like headers,params,responsetype,withCredentials etc
+    we will use options to pass parameters like headers,params,responsetype,withCredentials etc...,
+            put('url',body,options:{headers:{},params:{}});
+    the response type will be an observable
+    whenever the response is observable - we have to subscribe it in order to read values.
+
+    http client method options:
+    ---------------------------
+        HEADERS is of type headers
+            set what type of data we are submitting
+            ex : json or plain text
+        params :is of type http params
+
+    how to use httpclient post method in 6 steps
+    ---------------------------------------------
+        import and add HttpClientModule in app Module
+            import {HttpClientModule} from '@angular/common/http'
+
+        import HttpCLient in our service or component whenever we are making the HTTP request.
+            it is good practice to have all hTTP CALLS in service
+            Becomes reusable and easy to maintain code
+            easy to share b/w various components
+
+        inject the HttpCLient in the constructor methods of the class.
+
+        implement the put call method
+
+        import the service in to required calling component class
+
+        call the method to make the http request
+
+ HttpCLient Put Method
+ ---------------------
+    Making Api calls to submit to "update" the existing data is refered to as a put call.
+    To make a call we need an endpoint or API Url and data that need to be submitted
+        .delete('url')
+    we can also pass various parameters as options to the delete call
+        delete('url',options:{});
+    we will use options to pass parameters like headers,params,responsetype,withCredentials etc
+    we will use options to pass parameters like headers,params,responsetype,withCredentials etc...,
+            delete('url',options:{headers:{},params:{}});
+    the response type will be an observable
+    whenever the response is observable - we have to subscribe it in order to read values.
+
+    how to use httpclient post method in 6 steps
+    ---------------------------------------------
+        import and add HttpClientModule in app Module
+            import {HttpClientModule} from '@angular/common/http'
+
+        import HttpCLient in our service or component whenever we are making the HTTP request.
+            it is good practice to have all hTTP CALLS in service
+            Becomes reusable and easy to maintain code
+            easy to share b/w various components
+
+        inject the HttpCLient in the constructor methods of the class.
+
+        implement the Delete call method
+
+        import the service in to required calling component class
+
+        call the method to make the http request
+
+
+httpclient headers
+-------------------
+we can send headers with our http calls
+http headers are immutable  - they cannot be modified
+some of the examples of various http headers
+    authorization,content-type
+we can add header to post get delete put
+extremely imp and useful concept when working woth rest Apis
+
+we define the headers using http headers
+
+http headers has 7 methods
+------------------------
+
+    append
+    has
+    get
+    keys
+    get all
+    set 
+    delete
+
+const httpHeaders = new httpHeaders();
+httpHeaders = httpHeaders.append('content-type','application/json');
+httpHeaders.append('authorization','shdlhfliduegflhkwe');
+
+httpHeaders.set('x-content-id','your-value');
+httpHeaders.has('x-content-id',")
+httpHeaders.keys()  // will give the keys of gheaders
+
+
+const httpHeaders = new httpHeaders({
+    'content-type':'application/json',
+    'authorization','shdlhfliduegflhkwe'
+});
