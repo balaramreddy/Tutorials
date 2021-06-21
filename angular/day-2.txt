@@ -205,13 +205,6 @@ Routing
 				children:[
 					{ path:'', redirectTo:'/admin/(admin:addproduct)',pathMatch:'full'},
 					{ path: 'addproduct',component: AddproductComponent,outlet:'admin' },
-					{ path: 'viewproducts',component: ViewproductComponent,outlet:'admin'},
-					{ path :'addupcomingproject',component:AddUpcomingprojectComponent,outlet:'admin'},
-					{ path :'viewupcomingproject',component:ViewUpcomingprojectComponent,outlet:'admin'},
-					{ path :'addclient',component:AddclientComponent,outlet:'admin'},
-					{ path :'viewclient',component:ViewclientComponent,outlet:'admin'},
-					{ path :'addevent',component:AddeventComponent,outlet:'admin'},
-					{ path :'viewevent',component:VieweventComponent,outlet:'admin'},
 					{ path :'addprofile',component:AddprofileComponent,outlet:'admin'},
 					{ path :'viewprofile',component:ViewprofileComponent,outlet:'admin'}
 					]

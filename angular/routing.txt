@@ -1,0 +1,130 @@
+Routing
+--------------
+ Routing is a machanism used by angualar framework to manage the "paths" / "routes" of angular applications.
+ routing strategy helps in navigation b/w various views.
+ angular is a component driven framework which means configuring varuous routes;
+ angular framework comes with a package called Router. which has every thing need to design, develop and implemets routes and navigation links.
+ it is singleton- which means only one instance of the router in angular application.
+ 
+ we can handled the various types routes in angular application
+	-> 	routes for components
+	-> 	getting query params form routes
+	-> 	getting the url segments
+	->  loading child routes for a module
+	->  lazy loading
+    ->  handling wild card routes (handling 404 route)
+    ->  handling default routes
+    ->  route gaurds
+
+		
+	->  Routing Stratigies:
+		-----------------------
+		located in providers -> app.module.ts
+		
+		1> path location strategy (by default )
+			/home				 -> default
+			/search?keywords=12  -> queryparams
+			/product/10			 -> childroutes
+			/product/10/views	 -> multiple child routes
+			
+		2> hash location strategy
+			/#/home
+			/#/products
+			
+	-> 	Base Href
+		-------------
+		Angular is a single page application which means there will be only one html file.
+		Bydefault basehref is set to '/'
+		BaseHREF IS present in index.html.
+		
+	->  Routing Module
+		--------------
+		It is place holder for configuring all routes and navigation in one module
+		Best practice is configure all routes in one single place
+		easy to maintain and debug.
+		
+		we need to import modules from the package.
+		-> import { Routes ,RouterModule } from '@angular/router'
+		
+		import it form imports array 
+		
+	->  Router Outlet
+		-------------
+		Dynamically load the Created routes.
+		Every angular application having more than pne router Outlet.
+		we can have more than one router outlet in  our application .
+			.we can specify the named router outlet in our application
+
+			named routeroutlets
+	
+	->	parameterized routes
+		--------------------
+		{ path:'product/:id',component:'productcomponent' }
+		
+		
+		parameterquery ='';
+		
+		constructor(private activatedroute:ActivatedRoute){
+				this.activatedroute.params.subscribe(data =>{
+				this.parameterquery = data.id
+			})
+
+		}
+		
+		ngOnInit():void {		}
+
+	->  handling default routes or redirecting routes
+		-----------------------------------------------
+		{path:'',redirectTo:'home',pathmatch:'full'}
+
+	
+	->  handling wild card routes/404 route
+		--------------------------------------
+		{path:'**', component:'pagenotfoundcomponent'}	
+
+	-> child routes:
+
+			const routes: Routes = [
+				{
+					path: '',redirectTo: 'admin',pathMatch: 'full'
+				},
+				{ path: 'admin', component: AdminComponent,
+				children:[
+					{ path:'', redirectTo:'/admin/(admin:addproduct)',pathMatch:'full'},
+					{ path: 'addproduct',component: AddproductComponent,outlet:'admin' },
+					{ path :'addprofile',component:AddprofileComponent,outlet:'admin'},
+					{ path :'viewprofile',component:ViewprofileComponent,outlet:'admin'}
+					]
+				},
+			]
+
+	->  lazy loading
+		------------
+		Load the modules when they are required .
+		By default ngModule is EagelryLoading .
+		All modules are loaded as soon as app is loaded
+			it makes our application heavey
+			bundle size increases 
+			slow down the performance
+			
+		*** ng g m home --route home --module app.module
+			
+	->  Route Gaurds
+		-------------
+		route gaurds are used to secure the route paths.
+		
+		eg: if the user is not logged in 
+			user does't see the orders route
+			
+			if the user is loged in 
+			user should see the order route.
+			
+		when ever implement routegaurd it will give the booldean value ( true-1 false -0)
+		
+		ng g gaurd <name> 	-> it will ask the 4 interfaces available
+		
+			canActivate  	-> check to see if a user can visit a route.
+			canActivateChild-> check to see if a user ca visit a route children
+			canDeactivate 	-> check to see if a user can exit a route
+			resolve 		-> performs route data retrive before route activation
+			canLoad			-> check to see if a user can route to module that lazyLoading
